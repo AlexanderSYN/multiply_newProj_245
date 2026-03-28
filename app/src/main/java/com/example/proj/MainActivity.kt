@@ -28,25 +28,29 @@ class MainActivity : AppCompatActivity() {
 
         generateNumbers()
         binding.btnCheckAnsw.setOnClickListener {
-            val answerByUser = binding.etAnsw.text.toString().toInt()
-            if (answerByUser == answer) {
-                correctly += 1
-                score += 150
-                updateStats()
-                Toast.makeText(this, "Верно!", Toast.LENGTH_LONG).show()
-            } else {
-                uncorrectly += 1
+            try {
+                val answerByUser = binding.etAnsw.text.toString().toInt()
+                if (answerByUser == answer) {
+                    correctly += 1
+                    score += 150
+                    updateStats()
+                    Toast.makeText(this, "Верно!", Toast.LENGTH_LONG).show()
+                } else {
+                    uncorrectly += 1
 
-                if (score >= 150)
-                    score -= 150
-                else if (score >= 50)
-                    score -= 50
-                else
-                    Toast.makeText(this, "Слишком мало очков!", Toast.LENGTH_LONG).show()
+                    if (score >= 150)
+                        score -= 150
+                    else if (score >= 50)
+                        score -= 50
+                    else
+                        Toast.makeText(this, "Слишком мало очков!", Toast.LENGTH_LONG).show()
 
-                updateStats()
-                Thread.sleep(1000)
-                Toast.makeText(this, "Неверно, правильный ответ был: $answer!", Toast.LENGTH_LONG).show()
+                    updateStats()
+                    Thread.sleep(1000)
+                    Toast.makeText(this, "Неверно, правильный ответ был: $answer!", Toast.LENGTH_LONG).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(this, "Ошибка: $e", Toast.LENGTH_LONG).show()
             }
         }
     }
