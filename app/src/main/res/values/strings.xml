@@ -1,0 +1,6 @@
+<resources>
+    <string name="btnCheckText">проверить</string>
+    <string name="correctAnswCount">Правильные ответы: 0</string>
+    <string name="uncorrectAnswCount">Неправильные ответы: 0</string>
+    <string name="scores">Баллы: 0</string>
+</resources>
